@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Hola AngularJS</title>
+        <meta name="description" content="Hola mundo con AngularJS">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+        <script src="./js/angular.js"></script>
+        <script src="./js/app1_2.js"></script>
+    </head>
+    <!--> Si definimos nuestro controlador como una funcion, necesitamos definir una variable en el $scope
+        que en realidad es un puntero a nuestro controlador. Sino no podríamos conectar nuestro controlador
+        con la vista. La variable vm será un puntero a nuestro controlador <-->
+    <body ng-app="appMain" ng-controller="AppController as vm">
+        <div class="container">
+            <header class="jumbotron"><h1>{{vm.titulo}}</h1></header>
+            <article>
+                <form>
+                    <p>
+                        <label for="inputNombre">Nombre de usuario</label>
+                        <input id="inputNombre" type="text" name="inputNombre" ng-model="vm.inputNombre"/>
+                    </p>
+                    <p>
+                        <input type="button" ng-click="vm.borrar()" value="Borrar"/>
+                    </p>
+                </form>
+                <p>
+                    Hola {{vm.inputNombre || "mundo"}}
+                </p>
+            </article>   
+        
+            <footer>
+                <p class="well">{{vm.autor}} - 2017</p></footer>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Hola AngularJS</title>
+        <meta name="description" content="Hola mundo con AngularJS">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+        <script src="./lib/angular.js"></script>
+        <script src="./js/appModule.js"></script>
+        <script src="./js/appController.js"></script>
+    </head>
+    <!-- Con esta guia de estilos se usa otro nombre para la variable -->
+    <body ng-app="appMain" ng-controller="AppController as $ctrl">
+        <div class="container">
+            <header class="jumbotron"><h1>{{$ctrl.titulo}}</h1></header>
+            <article>
+                <form>
+                    <p>
+                        <label for="inputNombre">Nombre de usuario</label>
+                        <input id="inputNombre" type="text" name="inputNombre" ng-model="$ctrl.inputNombre"/>
+                    </p>
+                    <p>
+                        <input type="button" ng-click="$ctrl.borrar()" value="Borrar"/>
+                    </p>
+                </form>
+                <p>
+                    Hola {{$ctrl.inputNombre || "mundo"}}
+                </p>
+            </article>   
+        
+            <footer>
+                <p class="well">{{$ctrl.autor}} - 2017</p></footer>
+        </div>
+    </body>
+</html>
