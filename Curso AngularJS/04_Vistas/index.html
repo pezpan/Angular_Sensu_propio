@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Hola AngularJS</title>
+        <meta name="description" content="Hola mundo con AngularJS">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">    
+        <script src="../../node_modules/angular/angular.js"></script>
+        <script src="./js/appModule.js"></script>
+        <script src="./js/appController.js"></script>
+    </head>
+    <!-- Con esta guia de estilos se usa otro nombre para la variable -->
+    <body ng-app="appMain" ng-controller="AppController as $ctrl">
+        <div class="container">
+            <header class="jumbotron"><h1>{{$ctrl.titulo}}</h1></header>
+            <article>
+                <form>
+                    <fieldset class="form-group">
+                        <label for="ideas">Escribe una idea</label>
+                        <input id="ideas" type="text" name="inputIdeas" ng-model="$ctrl.sIdea" class="form-control"/>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <input type="button" ng-click="$ctrl.add()" value="Añadir" class="btn btn-primary"/>
+                    </fieldset>
+                </form>
+                <div>
+                    <ul>
+                        <li ng-repeat="idea in $ctrl.aIdeas track by $index">{{idea}}</li>
+                    </ul>
+                </div>
+            </article>   
+            
+            <footer>
+                <p class="card">{{$ctrl.autor}} - 2017</p></footer>
+        </div>
+    </body>
+</html>

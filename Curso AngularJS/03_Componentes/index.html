@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Hola AngularJS</title>
+        <meta name="description" content="Hola mundo con AngularJS">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">    
+        <script src="../../node_modules/angular/angular.js"></script>
+        <!-- Scripts de la aplicacion -->
+        <script src="./js/appModule.js"></script>
+        <script src="./js/appController.js"></script>
+        <!-- Aunque hagamos componentes que juntemos en un raiz, hay que importar todos los componentes en la pagina -->
+        <script src="./js/appCabeza.js"></script>        
+        <script src="./js/appPie.js"></script>
+        <script src="./js/appForm.js"></script>
+        <script src="./js/appRoot.js"></script>
+    </head>
+    <!-- Ya no necesitamos el controlador generico. Hemos definido 3 componentes, 
+        cada uno con su controlador independiente -->        
+    <body ng-app="appMain">
+        <!-- Podemos agruparlos en otro controlador que los agrupe y usarlo aqui -->
+        <app-root></app-root>
+    </body>
+</html>

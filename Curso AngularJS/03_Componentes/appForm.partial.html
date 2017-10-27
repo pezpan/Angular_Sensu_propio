@@ -1,0 +1,15 @@
+<article>
+    <form>
+        <p>
+            <label for="inputNombre">Nombre de usuario</label>
+            <input id="inputNombre" type="text" name="inputNombre" ng-model="vm.inputNombre"/>
+        </p>
+        <p>
+            <input type="button" ng-click="vm.borrar()" value="Borrar"/>
+        </p>
+
+        <p>
+            Hola {{vm.inputNombre || "mundo"}}
+        </p>
+    </form>
+</article>
