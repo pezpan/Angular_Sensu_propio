@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <title>Layout</title>
+  <script src="../../node_modules/angular/angular.js"></script>
+  <script src="./js/appModule.js"></script>
+  <script src="./js/appController.js"></script>
+</head>
+
+<body ng-app="appMain" ng-controller="AppController as $ctrl">
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1>Formularios</h1>
+      </div>
+    </div>
+    <div class="row">
+      <form class="col-8" ng-submit="$ctrl.enviar()" name="formulario" novalidate>
+        <!-- novalidate le dice al navegador que no use su sistema de validacion, usaremos el nuestro -->
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" class="form-control" name="nombre" id="nombre" aria-describedby="helpId" placeholder="Escribe tu nombre completo"
+            ng-model="$ctrl.form.nombre" ng-required='true' ng-maxlength="50" ng-minlength="4"
+            ng-model-options="{updateOn: 'blur'}">
+          <small id="helpId" class="form-text text-muted">Help text</small>
+        </div>
+        <p ng-show="formulario.nombre.$dirty && formulario.nombre.$invalid">El campo nombre no es correcto</p>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" name="email" id="email" aria-describedby="helpEmail" placeholder="Escribe tu email"
+            ng-model="$ctrl.form.email" ng-required='true'>
+          <small id="helpEmail" class="form-text text-muted">Help text</small>
+        </div>
+        <p>El campo email es necesario</p>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input type="checkbox" class="form-check-input" name="info" id="info" value="checkedValue" ng-model="$ctrl.form.info"> Quiero recibir informacion
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input type="checkbox" class="form-check-input" name="condiciones" id="condiciones" value="checkedValue" ng-model="$ctrl.form.condiciones"> He leído las condiciones
+          </label>
+        </div>
+        <legend>Elige un turno</legend>
+        <!-- <div class="form-check">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" name="turno" id="mañana" value="mañana" 
+            ng-model="$ctrl.form.turno" ng-change="$ctrl.selectCursos()">
+            Mañana
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" name="turno" id="tarde" value="tarde" 
+            ng-model="$ctrl.form.turno" ng-change="$ctrl.selectCursos()">
+            Tarde
+          </label>
+        </div> -->
+        <div class="form-check" ng-repeat="turno in $ctrl.turnos">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" name="turno" id={{turno.id}} value={{turno.id}} ng-model="$ctrl.form.turno"
+              ng-change="$ctrl.selectCursos()"> {{turno.name}}
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="curso">Elige un curso</label>
+          <!-- <select class="form-control" name="curso" id="curso" ng-model="$ctrl.form.curso">
+            <option value="CA23">AngularJS</option>
+            <option value="CR45">React</option>
+            <option value="CV12">Vue</option>
+          </select> -->
+          <select class="form-control" name="curso" id="curso" ng-model="$ctrl.form.curso" ng-options="curso as curso.titulo 
+                      for curso in $ctrl.cursos | orderBy: 'titulo' 
+                      track by curso.id"></select>
+        </div>
+        <input name="btnEnviar" id="btnEnviar" class="btn btn-primary" type="submit" value="Enviar" ng-disabled="formulario.$invalid">
+
+        <p></p>
+        <p>Validez: {{formulario.$valid}}</p>
+        <p>Validez nombre: {{formulario.nombre.$valid}}</p>
+        <p>Validez correo: {{formulario.email.$valid}}</p>
+      </form>
+
+      <aside class="col-3 offset-1" ng-if="$ctrl.enviado">
+        <h2>Datos enviados</h2>
+        <table class="table table-bordered table-stripped">
+          <tbody>
+            <tr>
+              <td scope="row">Nombre</td>
+              <td>{{$ctrl.form.nombre}}</td>
+            </tr>
+            <tr>
+              <td scope="row">Correo</td>
+              <td>{{$ctrl.form.email}}</td>
+            </tr>
+            <tr>
+              <td scope="row">Curso</td>
+              <td>{{$ctrl.form.curso.titulo}}</td>
+            </tr>
+            <tr>
+              <td scope="row">Turno</td>
+              <td>{{$ctrl.form.turno}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        {{$ctrl.form | json}}
+
+        <br/>
+        <p>
+          <input name="btnConfirmar" id="btnConfirmar" class="btn btn-primary" type="button" value="Confirmar" ng-click="$ctrl.confirmar()">
+        </p>
+
+
+      </aside>
+    </div>
+  </div>
+
+</body>
+
+</html>
