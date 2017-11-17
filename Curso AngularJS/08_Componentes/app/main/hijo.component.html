@@ -1,0 +1,23 @@
+<div class="card mb-3">
+        <div class="card-header">
+            Componente hijo
+        </div>
+        <div class="card-body">        
+            <div class="form-group">
+              <label for="preferido">Nombre preferido</label>
+              <input type="text"
+                class="form-control" name="preferido" id="preferido" ng-model="$ctrl.nombre" placeholder="">
+              <small id="helpId" class="form-text text-muted">Help text</small>
+            </div>
+        </div>
+        <div class="card-footer text-muted">
+            <!-- En los componentes el scope esta aislado, no se pueden compartir variables entre padre
+            e hijo directamente, aunque hay formas -->
+            <p>Me llamo con parent {{$ctrl.datosEnPadre.nombre}}</p>
+            <p>Me llamo con binding {{$ctrl.nombre}}</p>
+        </div>
+    </div>
+
+
+
+

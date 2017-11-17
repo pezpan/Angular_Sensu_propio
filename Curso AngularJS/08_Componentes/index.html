@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Layout</title>
+  <script src="../../node_modules/angular/angular.js"></script>
+  <script src="./app/appModule.js"></script>
+  <script src="./app/appComponent.js"></script>
+  <script src="./app/shared/shared.module.js"></script>
+  <script src="./app/shared/cabeza.component.js"></script>
+  <script src="./app/shared/pie.component.js"></script>
+  <script src="./app/main/main.module.js"></script>
+  <script src="./app/main/main.component.js"></script>  
+  <script src="./app/main/padre.component.js"></script>  
+  <script src="./app/main/hijo.component.js"></script>  
+  <title>Componentes</title>
+</head>
+
+<body ng-app="appModule">
+  <!-- Solo vamos a tener esta etiqueta en nuestro root 
+  Asi tendremos una jerarquia de componentes donde nuestra raiz será este componente.
+Los componentes que no sean estandar deben llevar un guion, por es hay que definir nuestros componentes
+formados por al menos dos palabras camel case -->
+  <app-root></app-root>
+</body>
+
+</html>
